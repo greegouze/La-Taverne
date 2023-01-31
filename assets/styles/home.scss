@@ -1,0 +1,22 @@
+@import "_theme.scss";
+
+.head-home {
+    background-image: url('../images/devanture.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+}
+
+.titleHome {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20px;
+    top: 40%;
+    left: 20px;
+    transform: translateY(-50%);
+}

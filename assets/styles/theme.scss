@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+$background: #2D2D2C;
+$font-title: #B37E1C;
+$primary: #261C0E;
+$font-family: 'Irish Grover', cursive;
+$font-color: #ffff;
+
+@import "~bootstrap/scss/bootstrap";
+
+* {
+    background-color: $background;
+    color: $font-color;
+    font-family: $font-family;
+}
+
+h1 {
+    color: $font-title;
+}
+
+.head-home {
+    height: 50vh;
+    border-radius: 0 0 30px 30px;
+    inset: 0;
+    z-index: -1;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
+}

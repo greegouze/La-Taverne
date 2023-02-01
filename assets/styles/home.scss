@@ -3,22 +3,26 @@
 .head-home {
     background-image: url('../images/test.png');
     background-size: cover;
-    background-position: 50% 82%;
+    background-position: 50% 75%;
     background-repeat: no-repeat;
     height: 580px;
 }
 
 .titleHome {
-    position: fixed;
+    position: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     margin-left: 20px;
-    top: 30%;
     left: 20px;
 }
 
-img, svg {
-     margin-right: 30px;
+.profil {
+     margin-right: 50px;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: 0.4s;
 }

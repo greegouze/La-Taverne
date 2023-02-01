@@ -1,15 +1,38 @@
-	<nav class="navbar navbar-expand-lg bg-primary">
-		<div class="container-fluid bg-primary">
-			<a class="navbar-brand bg-primary text-light" href="#">La taverne de Grego</a>
-			<button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon bg-primary"></span>
-			</button>
-			<div class="collapse navbar-collapse bg-primary" id="navbarNavAltMarkup">
-				<div class="navbar-nav">
-					<a class="nav-link active bg-primary text-light" aria-current="page" href="#">Acceuil</a>
-					<a class="nav-link bg-primary text-light" href="#">Catalogue</a>
-				</div>
-			</div>
-		</div>
-	</nav>
+{# {% if app.user %}
 
+    {{ app.user.email }}
+
+    <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+
+{% else %}
+
+    <a href="{{ path('app_login') }}"> Se connecter</a> #}
+
+<nav class="navbar navbar-expand-lg bg-primary pt-3">
+	<div class="container-fluid">
+		<a class="navbar-brand text-light" href="{{ path('home_index')}}">La taverne</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active text-light" aria-current="page" href="#">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#">Catalogue</a>
+				</li>
+			</ul>
+			{% if app.user %}
+				<a class="text-light" href="{{ path('app_logout') }}">
+					Se déconnecter</a>
+			{% else %}
+				<a class="nav-link bg-primary text-light" href="{{ path('app_login') }}">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" float:"left" fill="currentColor" class="bi bi-person-fill" viewbox="0 0 16 16">
+						<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+					</svg>
+				</a>
+			{% endif %}
+		</div>
+	</div>
+</nav>

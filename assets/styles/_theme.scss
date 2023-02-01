@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 
 $background: #2D2D2C;
-$font-title: #B37E1C;
+$secondary: #B37E1C;
 $primary: #261C0E;
 $font-family: 'Irish Grover', cursive;
 $font-color: #ffff;
@@ -9,7 +9,6 @@ $font-color: #ffff;
 @import "~bootstrap/scss/bootstrap";
 
 * {
-    color: $font-color;
     font-family: $font-family;
 }
 
@@ -17,7 +16,7 @@ body {
     background-color: $background;
 }
 
-h1 {
-    color: $font-title;
+h1, h2{
+    color: $secondary;
 }
 

@@ -24,7 +24,7 @@ class BeerFixtures extends Fixture implements DependentFixtureInterface
                 $beer = new Beer();
                 $beer->setName((self::BEERS[$beerKey]));
                 $beer->setPays('Belgique');
-                $beer->setImage('yolo');
+                $beer->setImage('');
                 $category = $this->getReference('category_' . $i);
                 $beer->setCategory($category);
                 $this->addReference('category_' . $i . '_beer_' . $beerKey, $beer);

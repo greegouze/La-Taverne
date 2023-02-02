@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block title %}Hello BeerController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="d-flex justify content-center">
+			<img src="{{ vich_uploader_asset(beer) }}" height="600px" width="250px" class="card-img rounded mt-5">
+		</div>
+		<div class="mt-5">
+			<h2 class="text-center">{{ beer.name }}<h2>
+					<p class="text-light">{{ beer.description }}</p>
+				</div>
+			</div>
+		{% endblock %}

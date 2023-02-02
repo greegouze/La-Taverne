@@ -2,20 +2,21 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Beer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/beer', name: 'beer')]
+
 class BeerController extends AbstractController
 {
-    #[Route('/', name: 'index')]
-    public function index(): Response
+    #[Route('/show/{id}', name: 'app_beer')]
+    public function show(Beer $beer): Response
     {
+        $beer;
 
-        return $this->render('beer/index.html.twig', [
-            'controller_name' => 'BeerController',
+        return $this->render('beer/show.html.twig', [
+            'beer' => $beer,
         ]);
     }
 }

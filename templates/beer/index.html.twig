@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block title %}Hello BeerController!
+{% endblock %}
+
+{% block body %}
+	<div class="banner">
+		<div class="">
+			<images>{{ category.image}}
+			</div>
+		</div>
+	</div>
+    <div class="bodyContainer container">
+		<div class="row">
+			{% for beer in beers %}
+				<div class="col-12 col-md-6 col-lg-4">
+					<h3 class="text-center text-secondary mt-5">{{ beer.name }}</h3>
+					<div class="card mt-4">
+						
+							<img src="{{ asset('build/images/walpaper.png') }}" class="card-img">
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

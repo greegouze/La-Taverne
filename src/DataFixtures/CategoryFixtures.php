@@ -17,11 +17,11 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         foreach (self::CATEGORIES as $key => $categoryName) {
-           $category = new Category();
-           $category->setName($categoryName);
-           $category->setImage('/public/build/images/ficheproduit3.9cdf662e.png');
+            $category = new Category();
+            $category->setName($categoryName);
+            $category->setImage('/images/ficheproduit3.9cdf662e.png');
             $manager->persist($category);
-            $this->addReference('tutorial_' . $key,$category);
+            $this->addReference('category_' . $key, $category);
 
             $manager->flush();
         }

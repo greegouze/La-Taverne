@@ -2,12 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[Vich\Uploadable]
 class Category
 {
     #[ORM\Id]
@@ -20,6 +26,13 @@ class Category
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[Assert\NotBlank]
+    #[Vich\UploadableField(mapping: "genre_images", fileNameProperty: "image")]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $updatedAt = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Beer::class)]
     private Collection $beers;
@@ -61,6 +74,21 @@ class Category
         $this->image = $image;
 
         return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
     /**

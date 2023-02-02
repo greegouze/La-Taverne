@@ -20,7 +20,9 @@
 				<div class="col-12 col-md-6 col-lg-4">
 					<h3 class="text-center text-secondary mt-5">{{ category.name }}</h3>
 					<div class="card mt-4">
-						<img src="{{ asset('build/images/categoryBlond.png') }}" class="card-img">
+						<a class="lesson" href="{{ path('category_show', {id: category.id}) }}">
+							<img src="{{ asset('build/images/categoryBlond.png') }}" class="card-img">
+						</a>
 					</div>
 				</div>
 			{% endfor %}

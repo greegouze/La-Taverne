@@ -34,7 +34,7 @@ class Category
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Beer::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Beer::class, cascade: ["persist", "remove"])]
     private Collection $beers;
 
     public function __toString()

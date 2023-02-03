@@ -42,16 +42,19 @@ class Beer
     #[ORM\Column(nullable: true)]
     private ?int $quantite = null;
 
-    #[ORM\ManyToOne(inversedBy: 'beers')]
-    private ?Category $category = null;
-
-    /*   #[
+ /*    #[
         ORM\OneToMany(
             mappedBy: 'beer',
             targetEntity: Category::class,
             cascade: ["persist", "remove"]
         )
-    ] */
+    ]  */
+    #[ORM\ManyToOne(inversedBy: 'beers' ,
+    targetEntity: Category::class,
+    cascade: ["persist", "remove"])]
+    private ?Category $category = null;
+
+
 
     public function getId(): ?int
     {

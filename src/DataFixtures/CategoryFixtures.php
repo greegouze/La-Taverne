@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-
 class CategoryFixtures extends Fixture
 {
     public const CATEGORIES = [
@@ -19,7 +18,7 @@ class CategoryFixtures extends Fixture
         foreach (self::CATEGORIES as $key => $categoryName) {
             $category = new Category();
             $category->setName($categoryName);
-            $category->setImage('test2.png');
+            $category->setImage('categoryBlond.png');
             $manager->persist($category);
             $this->addReference('category_' . $key, $category);
 

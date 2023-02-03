@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[Vich\Uploadable]
@@ -26,13 +27,14 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[Assert\NotBlank]
     #[Vich\UploadableField(mapping: "genre_images", fileNameProperty: "image")]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Beer::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Beer::class, cascade: ["persist", "remove"])]
     private Collection $beers;
 
     public function __toString()

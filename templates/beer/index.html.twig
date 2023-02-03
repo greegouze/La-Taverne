@@ -10,16 +10,17 @@
 
 {% block body %}
 	<div class="banner">
-		<img  class="bannerBeer" src="{{ vich_uploader_asset(category) }}">
+		<div class="beeBanner"></div>
 	</div>
 	<div class="bodyContainer container">
 		<div class="row">
 			{% for beer in beers %}
-				<div class="col-12 col-md-6 col-lg-4">
+				<div class="col-12 col-md-6 col-lg-3">
 					<h3 class="text-center text-secondary mt-5">{{ beer.name }}</h3>
 					<div class="card mt-4">
-
-						<img src="{{ vich_uploader_asset(beer) }}" class="card-img">
+						<a class="lesson" href="{{ path('app_beer', {id: beer.id}) }}"> 
+							<img src="{{ vich_uploader_asset(beer) }}" class="card-img">
+						 </a> 
 					</div>
 				</div>
 			{% endfor %}

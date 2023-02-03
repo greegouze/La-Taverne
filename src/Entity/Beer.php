@@ -7,7 +7,9 @@ use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
+use App\Entity\Category;
 
 #[ORM\Entity(repositoryClass: BeerRepository::class)]
 #[Vich\Uploadable]
@@ -24,6 +26,7 @@ class Beer
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[Assert\NotBlank]
     #[Vich\UploadableField(mapping: "genre_images", fileNameProperty: "image")]
     private ?File $imageFile = null;
 
@@ -39,8 +42,19 @@ class Beer
     #[ORM\Column(nullable: true)]
     private ?int $quantite = null;
 
-    #[ORM\ManyToOne(inversedBy: 'beers')]
+ /*    #[
+        ORM\OneToMany(
+            mappedBy: 'beer',
+            targetEntity: Category::class,
+            cascade: ["persist", "remove"]
+        )
+    ]  */
+    #[ORM\ManyToOne(inversedBy: 'beers' ,
+    targetEntity: Category::class,
+    cascade: ["persist", "remove"])]
     private ?Category $category = null;
+
+
 
     public function getId(): ?int
     {

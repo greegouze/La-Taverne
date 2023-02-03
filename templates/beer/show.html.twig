@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block title %}Hello BeerController!
+{% endblock %}
+
+{% block body %}
+
+		
+			
+
+
+  <div class="row g-0">
+    <div class="col-md-4">
+     <img src="{{ vich_uploader_asset(beer) }}" style="height:600px;" class="img-fluid rounded mt-4 mx-2" alt="...">
+    </div>
+    <div class="col mx-5">
+      <div class="card-body">
+        <h4 class="card-title text-secondary fs-2 mt-4 fw-3">{{ beer.name}}</h4>
+        <p class="card-text text-light fs-4 mt-4">{{ beer.description}}</p>
+		 <p class="card-text text-secondary fs-2 mt-4">Category :</p> <p class="text-light fs-4">{{ beer.category }}
+		 <p class="card-text text-secondary fs-2">Pays :</p> <p class="text-light fs-4">{{ beer.pays }}
+        <p class="card-text text-secondary fs-2"><small class="text-muted">Dernière sauvegarde il y a 3 mins</small></p>
+      </div>
+    </div>
+  </div>
+
+		{% endblock %}
